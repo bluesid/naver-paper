@@ -228,19 +228,18 @@ if __name__ == "__main__":
     cd_obj = None
     headless = args.headless
     newsave = args.newsave
-    if (args.id is None and
-            args.pw is None and
-            args.cd is None and
-            args.credential_file is None):
+    if (args.id is None and args.pw is None and
+        args.cd is None and
+        args.credential_file is None):
+
         id = os.getenv("USERNAME")
         pw = os.getenv("PASSWORD")
-        cd_env = os.getenv("CREDENTIALENV", None)
-        print(id is None)
-        print(id == "")
+        cd_env = os.getenv("CREDENTIALENV")
+
         if(id is None and pw is None and cd_env is None):
             print('not setting USERNAME / PASSWORD')
             exit()
-        if(id is not None and pw is not None and id != "" and pw !=""):
+        if(id is not None and pw is not None):
             cd_obj = [{"id": id, "pw": pw}]
         else:
             cd_obj = json.loads(cd_env)

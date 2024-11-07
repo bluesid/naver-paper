@@ -235,10 +235,12 @@ if __name__ == "__main__":
         id = os.getenv("USERNAME")
         pw = os.getenv("PASSWORD")
         cd_env = os.getenv("CREDENTIALENV", None)
+        print(id is None)
+        print(id == "")
         if(id is None and pw is None and cd_env is None):
             print('not setting USERNAME / PASSWORD')
             exit()
-        if(id is not None and pw is not None and id != "" and pw !="":
+        if(id is not None and pw is not None and id != "" and pw !=""):
             cd_obj = [{"id": id, "pw": pw}]
         else:
             cd_obj = json.loads(cd_env)

@@ -50,6 +50,7 @@ def init(id, pwd, ua, mobile_device, headless, newsave):
     # ID page (successful logged-in) title for nid.naver.com
     #   <title>Naver ID</title>
     if driver.title == "Naver ID" or driver.title == "네이버ID":
+        print("이미 로그인 되어 있습니다.")
         return driver
 
     # 현재 열려 있는 창 가져오기
@@ -104,10 +105,11 @@ def init(id, pwd, ua, mobile_device, headless, newsave):
     # new.dontsave 등록 안함
     try:
         if newsave is True:
-            driver2.find_element(By.ID, "new.save").click()
+            save_element = driver2.find_elements(By.ID, "new.save")
+            save_element.click()
         else:
-            driver2.find_element(By.ID, "new.dontsave").click()
-        time.sleep(1)
+            dontsave_element = driver2.find_elements(By.ID, "new.dontsave")
+            dontsave_element.click()
     except Exception as e:
         # Print warning and go to login page.
         logging.warning("%s: new save or dontsave 오류", e)

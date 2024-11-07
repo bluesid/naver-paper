@@ -139,9 +139,6 @@ def init(id, pwd, ua, mobile_device, headless, newsave):
         print(f"페이지 타이틀 : {page_title}")
         print("현재 페이지 HTML:")
         print(driver2.page_source)
-        err_common = driver2.find_elements(By.ID, "err_common")
-        if err_common.find_element(By.CLASS_NAME, "error_message"):
-            print(f"에러 메시지 : {driver2.find_element(By.CLASS_NAME, 'error_message').text}")
 
         if headless is True:
             time.sleep(1)

@@ -137,6 +137,8 @@ def init(id, pwd, ua, mobile_device, headless, newsave):
             exit()
         print(f"로그인 되지 않음 #{try_login_count}")
         print(f"페이지 타이틀 : {page_title}")
+        if driver2.find_element(By.CLASS_NAME, "error_message"):
+            print(f"에러 메시지 : {driver2.find_element(By.CLASS_NAME, 'error_message').text}")
 
         if headless is True:
             time.sleep(1)
